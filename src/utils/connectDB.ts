@@ -1,9 +1,10 @@
 import mongoose from 'mongoose'
 import config from 'config'
+import dotenv from 'dotenv'
 
-const dbUrl = `mongodb://${config.get<string>('dbName')}:${config.get<string>(
-    'dbPass'
-)}@localhost:6000/jwtAuth?authSource=admin`
+dotenv.config()
+
+const dbUrl = process.env.MONGO_DB_URL as string
 
 export const connectDB = async () => {
     try {
