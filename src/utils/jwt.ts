@@ -1,6 +1,8 @@
 import jwt, { JwtPayload, SignOptions } from 'jsonwebtoken'
 import config from 'config'
 
+const privateKey = ''
+
 /**
  * @description Sign a JWT token with the given payload and options
  * @param payload The payload to sign
@@ -17,11 +19,9 @@ export const signJwt = (
         'base64'
     ).toString('ascii')
 
-    console.log(`privateKey: ${privateKey}`)
-
     return jwt.sign(payload, privateKey, {
         ...(options && options),
-        algorithm: 'RS256',
+        algorithm: 'HS256',
     })
 }
 
