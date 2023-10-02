@@ -37,10 +37,7 @@ export class User {
     @prop({ default: 'user' })
     public role: string
 
-    public comparePasswords = async (
-        hashedPassword: string,
-        candidatePassword: string
-    ) => {
+    async comparePasswords(hashedPassword: string, candidatePassword: string) {
         return await bcrypt.compare(candidatePassword, hashedPassword)
     }
 }
